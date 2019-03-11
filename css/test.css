@@ -1,0 +1,65 @@
+/* GENERAL STYLES */
+
+
+.header
+{
+
+
+ border: 3px solid green;
+left:215px;
+ position:relative;
+overflow:hidden;
+ width: 900px;
+ 
+ height: 150px;
+
+margin: 10px;
+ 
+}
+
+a {
+		color: #000;
+		text-decoration: none;
+		text-transform: uppercase;
+		font-family: Helvetica;
+}
+
+
+
+
+/* THE ROUND PSEUDO-ELEMENT HOVER STYLES */
+
+.highlight,.highlight1,.highlight2 {
+		max-width: 960px;
+		margin:0 auto;
+}
+/* HIGHLIGHT */
+.highlight .button,.highlight1 .button,.highlight2 .button {
+		display: inline-block;
+		color: #fff;
+		background-color: brown;
+		margin: 20px;
+		width: 930px;
+		height: 40px;
+		line-height: 40px;
+		border-radius: 20px;
+		position: relative;
+		overflow: hidden;
+}
+
+.highlight .button:before,.highlight1 .button:before,.highlight2 .button:before {
+		content: "";
+		position: absolute;
+		top: -30px;
+		left: -80px;
+		height: 100px;
+		width: 70px;
+		background: rgba(255, 255, 255, .7);
+		transform: rotate(20deg);
+}
+
+.highlight .button:hover:before,.highlight1 .button:hover:before,.highlight2 .button:hover:before {
+		left: 950px;
+		transition: all .188s;
+}
+.highlight,.highlight1,.highlight2 {margin-bottom:100px;}
