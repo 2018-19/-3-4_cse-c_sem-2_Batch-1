@@ -1,0 +1,140 @@
+
+<html>
+<head>
+     <title>Anits </title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="css/form.css">
+<link rel="stylesheet" href="css/sidenav.css">
+    
+</head>
+<body background="back.jpg">
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="home.php">Home</a>
+<a href="personalrepository.php">Personal Repository</a>
+  <a href="Paper Publication.html">Paper Publication</a>
+  <a href="Participation.html">Participation</a>
+  <a href="Achivements.html">Achivements</a>
+<a href="view.php">View</a>
+<a href="logout.php" target="_parent">Logout</a>
+</div>
+
+<div id="main">
+
+  <span style="font-size:30px;cursor:pointer;color:white;" onclick="openNav()">&#9776; Menu</span>
+
+
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+ document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+ document.body.style.backgroundColor = "white";
+}
+</script>
+ <script >
+           function validate() {
+      
+          var x = document.forms["myForm"]["field31"].value;
+          if (x == "") {
+            alert( "Please provide Type Of Achievement!" );
+            document.myForm.field31.focus() ;
+            return false;
+         }
+
+        var y = document.forms["myForm"]["field32"].value;
+         if( y == "" ) {
+            alert( "Please provide Event/subject!" );
+            document.myForm.field32.focus() ;
+            return false;
+         }
+
+       
+         var a = document.forms["myForm"]["field33"].value;
+         if( a == "" ) {
+            alert( "Please provide Level!" );
+            document.myForm.field33.focus() ;
+            return false;
+             }
+
+          var b = document.forms["myForm"]["field34"].value;
+         if( b == "" ) {
+            alert( "Please provide Organisation!" );
+            document.myForm.field34.focus() ;
+            return false;
+             }
+          
+      var c = document.forms["myForm"]["field35"].value;
+         if( c == "" ) {
+            alert( "Please provide Date!" );
+            document.myForm.field35.focus() ;
+            return false;
+             }
+        
+  if(!document.myForm.agree.checked){
+alert("Please check the terms and conditions");
+ return false;
+ } 
+
+         return( true );
+      }
+      function fileValidation(){
+    var fileInput = document.getElementById('file');
+    var filePath = fileInput.value;
+    var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif|\.pdf)$/i;
+    if(!allowedExtensions.exec(filePath)){
+        alert('Please upload file having extensions .jpeg/.jpg/.png/.gif/.pdf only.');
+        fileInput.value = '';
+        return false;
+    }else{
+        //Image preview
+        if (fileInput.files && fileInput.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('imagePreview').innerHTML = '<img src="'+e.target.result+'"/>';
+            };
+            reader.readAsDataURL(fileInput.files[0]);
+        }
+    }
+}
+    </script >
+</head>
+<body>
+<center>
+<pre>
+<div class="container"><font face="Baskerville Old Face" size="+2" color="white">
+ <form action = "achievements.php"  enctype="multipart/form-data" name = "myForm" onsubmit = "return validate()" method="post">
+ <fieldset>
+ <legend> <font face="stencil" size="+5" color="orange">ACHIVEMENTS</font></legend>
+     Type Of Achivement <span class="required">*</span>  <input type="text" name="field31" class="field-long"  />  
+
+                 Event/subject <span class="required">*</span>  <input type="text" name="field32" class="field-long"  />  
+
+                           Level <span class="required">*</span>   <select name="field33" class="field-select">
+        <option value="State">State</option>
+        <option value="National">National</option>
+        <option value="InterNational">InterNational</option>
+        </select>
+    
+                Organization <span class="required">*</span>   <input type="text" name="field34" class="field-long"  />  
+
+            Date <span class="required">*</span>   <input type="Date" name="field35" class="field-long" placeholder="" /> 
+
+                    Any Other <input type="text" name="field36" class="field-long"  /> 
+      
+  Select files <input type="file" id="file"  name="file" multiple required>
+  
+ <input type="submit" value="Submit" name="submit" />   <input type="Reset" value="Reset" />
+ </fieldset>
+       </form>
+    </div>
+</div>
+   
+    </body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html lang="en" >
+
+
+<head>
+  
+<meta charset="UTF-8">
+ 
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.png" type="image/x-icon">
+
+
+ <title>Anits login/sigup</title>
+ 
+ 
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+
+ 
+     <link rel="stylesheet" href="css/style.css">
+
+ <style>
+body {
+    background-color: #E6E6FA;
+    background-image: url("back.jpg");
+    background-size:  100%;
+    background-repeat: repeat;
+    background-position: left top;
+}
+</style>
+<script type="text/javascript">
+    
+    history.pushState(null, null, location.href);
+    window.onpopstate = function () {
+        history.go(1);
+    };
+    
+    function confirmPass() {
+        var pass = document.getElementById("pass").value
+        var confPass = document.getElementById("cpass").value
+        if(pass != confPass) {
+            alert('Oops!Passwords mismatch..Try Again');
+        }
+    }
+</script>
+  
+ 
+</head>
+
+
+<body >
+
+ 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="images/banner.jpg">
+ <div class="cont">
+ 
+ <div class="form sign-in">
+<form action="login.php" method="post">
+    <h2 style="color:DodgerBlue;">Welcome</h2>
+
+ <label>
+      <span>College Mail Id</span>
+      <input type="text" name="logmail" placeholder="Eg:anil.neerukonda.cse@anits.edu.in"  autofocus required/>
+    </label>
+   
+ <label>
+      <span>Password</span>
+      <input type="password" name="password" placeholder="Enter password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required/>
+    </label>
+  
+  
+   
+ <button type="submit" class="submit">Sign In</button>
+   
+     </form>
+  
+</div>
+ 
+ <div class="sub-cont">
+    
+<div class="img">
+    
+  <div class="img__text m--up">
+     
+   <h2>New here?</h2>
+     
+   <p>Sign up and discover great amount of new opportunities!</p>
+    
+  </div>
+      <div class="img__text m--in">
+      
+  <h2>One of us?</h2>
+     
+   <p>If you already has an account, just sign in. We've missed you!</p>
+ 
+     </div>
+    
+  <div class="img__btn">
+      
+  <span class="m--up">Sign Up</span>
+       
+ <span class="m--in">Sign In</span>
+    
+  </div>
+  
+  </div>
+  
+  <div class="form sign-up">
+   
+       <form name="myForm" action="reg.php" method="post"  >
+    
+  <label>
+        <span>UserName</span>
+        <input type="text" name="name" placeholder="Eg:peter"/>
+      </label>
+           <label>
+        <span>Collge Email Id</span>
+        <input type="email" name="email" placeholder="Eg:anil.neerukonda.cse@anits.edu.in" pattern="[a-z0-9A-Z._%+-]+.cse@anits.edu.in" title="Register with  Department Mail Id Only" required/>
+      </label>
+   
+   <label>
+        <span>Password</span>
+        <input type="password"  id="pass" name="password" placeholder="Create password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required />
+      </label>
+           <label>
+           <span>ConfirmPassword</span>
+        <input type="password"   id="cpass" name="cpassword" placeholder="Confirm password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"  onblur="confirmPass()" required />
+      </label>
+  
+    <button type="submit" class="submit" >Sign Up</button>
+  
+    
+      </form>
+ </div>
+  
+</div>
+
+</div>
+  
+  
+
+
+    <script  src="js/index.js">
+        
+   
+        
+        
+</script>
+
+
+
+
+
+</body>
+
+
+</html>

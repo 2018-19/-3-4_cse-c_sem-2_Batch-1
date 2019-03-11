@@ -1,0 +1,167 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/sidenav.css">
+    <link rel="stylesheet" href="css/form.css">
+</head>
+<body background="back.jpg">
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="home.html">Home</a>
+<a href="personalrepository.php">Personal Repository</a>
+  <a href="Paper Publication.html">Paper Publication</a>
+  <a href="Participation.html">Participation</a>
+  <a href="Achivements.html">Achivements</a>
+<a href="view.php">View</a>
+<a href="logout.php" target="_parent">Logout</a>
+</div>
+
+<div id="main">
+ 
+  <span style="font-size:30px;cursor:pointer;color:white;" onclick="openNav()">&#9776; Menu</span>
+
+
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+ document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+ document.body.style.backgroundColor = "white";
+}
+</script>
+   
+
+    <form>
+ 
+
+    <?php 
+   echo"<table  border='2'>";
+if (isset($_GET['email'])){ 
+       include 'dbConfig.php';
+    
+$email=$_GET['email'];
+$table = $_GET['tab'];
+$fdate = $_GET['fdate'];
+$todate = $_GET['todate'];
+    
+
+    if($table=="selectall"){
+        echo("<h1 style='text-align:center'>Achivements  Table</h1>");
+ $sql = "select * from achievements  where Email='$email'";    
+$res = mysqli_query($db,$sql);
+$result = mysqli_query($db,"SHOW FIELDS FROM $dbName.achievements") or die("ur dead");
+
+          
+   echo "<table><tr>";
+	while ($row = mysqli_fetch_array($result)) { 
+		echo '<th>' .$row['Field'] . '</th>';
+	}
+	echo '</tr></table>';
+
+   
+    
+     $i=0;
+    $j=mysqli_num_rows($result);
+    while((($row=mysqli_fetch_array($res))>0)){
+          echo "<table  border='2'>";
+           echo "<tr>";
+        for($i=0;$i<$j;$i++){
+         echo "<td>".$row[$i]."</td>";
+        }
+        echo "</tr>";
+        echo "</table>";
+    }
+        echo("<br><h1 style='text-align:center'>paperpublications  Table</h1>");
+$sql1 = "select * from paperpublications  where Email='$email'";    
+$res = mysqli_query($db,$sql1);
+   $result = mysqli_query($db,"SHOW FIELDS FROM $dbName.paperpublications") or die("ur dead");
+
+          
+   echo "<table><tr>";
+	while ($row = mysqli_fetch_array($result)) { 
+		echo '<th>' .$row['Field'] . '</th>';
+	}
+	echo '</tr></table>';
+
+   //2nd  
+    
+     $i=0;
+    $j=mysqli_num_rows($result);
+    while((($row=mysqli_fetch_array($res))>0)){
+          echo "<table  border='2'>";
+           echo "<tr>";
+        for($i=0;$i<$j;$i++){
+         echo "<td>".$row[$i]."</td>";
+        }
+        echo "</tr>";
+        echo "</table>";
+    }     
+ echo("<br><h1 style='text-align:center'>participations  Table</h1>");
+$sql2 = "select * from participations  where Email='$email'";    
+$res = mysqli_query($db,$sql2);  
+
+        $result = mysqli_query($db,"SHOW FIELDS FROM $dbName.participations") or die("ur dead");
+
+          
+   echo "<table><tr>";
+	while ($row = mysqli_fetch_array($result)) { 
+		echo '<th>' .$row['Field'] . '</th>';
+	}
+	echo '</tr></table>';
+
+   //3rd  
+    
+     $i=0;
+    $j=mysqli_num_rows($result);
+    while((($row=mysqli_fetch_array($res))>0)){
+          echo "<table  border='2'>";
+           echo "<tr>";
+        for($i=0;$i<$j;$i++){
+         echo "<td>".$row[$i]."</td>";
+        }
+        echo "</tr>";
+        echo "</table>";
+    }     
+
+ 
+    }
+    else{
+    
+    $res= mysqli_query($db,"select * from $table where Email='$email' or FromDate BETWEEN '$fdate' AND '$todate' ORDER BY `ToDate` DESC ") or die ("u died");
+    $result = mysqli_query($db,"SHOW FIELDS FROM $dbName.$table") or die("ur dead");
+    
+   echo "<table><tr>";
+	while ($row = mysqli_fetch_array($result)) { 
+		echo '<th>' .$row['Field'] . '</th>';
+	}
+	echo '</tr>';
+ echo  '</table>';
+    ?>
+    
+   
+    <?php 
+    
+     $i=0;
+    $j=mysqli_num_rows($result);
+    while((($row=mysqli_fetch_array($res))>0)){
+          echo "<table  border='2'>";
+           echo "<tr>";
+        for($i=0;$i<$j;$i++){
+         echo "<td>".$row[$i]."</td>";
+        }
+        echo "</tr>";
+        echo "</table>";
+    }
+    }
+}
+    ?>
+       
+</form>
+     </div>
+    </body>
+</html> 

@@ -1,0 +1,42 @@
+<html>
+<head>
+     <title>Anits </title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="css/form.css">
+<link rel="stylesheet" href="css/sidenav.css">
+</head>
+<body background="back.jpg">
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="home.html">Home</a>
+<a href="personalrepository.php">Personal Repository</a>
+  <a href="Paper Publication.html">Paper Publication</a>
+  <a href="Participation.html">Participation</a>
+  <a href="Achivements.html">Achivements</a>
+<a href="view.php">View</a>
+<a href="http://localhost/batch/logout.php" target="_parent">Logout</a>
+</div>
+
+<div id="main">
+
+  <span style="font-size:30px;cursor:pointer;color:white;" onclick="openNav()">&#9776; Menu</span>
+
+
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+ document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+ document.body.style.backgroundColor = "white";
+}
+</script>
+    </div>
+    </body>
+
+</html>

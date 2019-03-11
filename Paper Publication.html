@@ -1,0 +1,167 @@
+<html>
+<head>
+    <title>Anits </title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="css/form.css">
+<link rel="stylesheet" href="css/sidenav.css">
+</head>
+<body background="back.jpg">
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+<a href="home.php">Home</a>
+<a href="personalrepository.php">Personal Repository</a>
+  <a href="Paper Publication.html">Paper Publication</a>
+  <a href="Participation.html">Participation</a>
+  <a href="Achivements.html">Achivements</a>
+<a href="view.php">View</a>
+<a href="logout.php" target="_parent">Logout</a>
+</div>
+
+<div id="main">
+
+  <span style="font-size:30px;cursor:pointer;color:white;" onclick="openNav()">&#9776; Menu</span>
+
+
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+ document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+  document.body.style.backgroundColor = "white";
+}
+</script>
+    <script >
+           function validate() {
+      
+          var x = document.forms["myForm"]["field31"].value;
+          if (x == "") {
+            alert( "Please provide your name!" );
+            document.myForm.field31.focus() ;
+            return false;
+         }
+
+        var y = document.forms["myForm"]["field4"].value;
+         if( y == "" ) {
+            alert( "Please provide State!" );
+            document.myForm.field4.focus() ;
+            return false;
+         }
+
+          var z= document.forms["myForm"]["field32"].value;
+         if( z == "" ) {
+            alert( "Please provide  Name of Publisher!" );
+            document.myForm.field32.focus() ;
+            return false;
+         }
+         var a = document.forms["myForm"]["field33"].value;
+         if( a == "" ) {
+            alert( "Please provide Title of Paper!" );
+            document.myForm.field33.focus() ;
+            return false;
+             }
+          
+          var c=document.forms["myForm"]["field3"].value;
+          if( c == "" ) {
+            alert( "Please provide Impact Factor!" );
+            document.myForm.field3.focus() ;
+            return false;
+             }
+
+             var d=document.forms["myForm"]["field5"].value;
+          if( d == "" ) {
+            alert( "Please provide Index" );
+            document.myForm.field5.focus() ;
+            return false;
+             }
+
+           var b = document.forms["myForm"]["field34"].value;
+           var text = /^[0-9]+$/;
+          if( b == " " ) {
+            alert( "Please Enter the Year" );
+            document.myForm.field34.focus() ;
+            return false;
+            }
+        if ((b != "") && (!text.test(b))) {
+
+            alert("Please Enter Numeric Values Only in Academic Year");
+            return false;
+        }
+
+        if (b.length != 4) {
+            alert("Year is not proper. Please check");
+            return false;
+        }
+
+    
+          
+          
+  if(!document.myForm.agree.checked){
+alert("Please check the terms and conditions");
+ return false;
+ } 
+
+         return( true );
+      }
+      function fileValidation(){
+    var fileInput = document.getElementById('file');
+    var filePath = fileInput.value;
+    var allowedExtensions = /(\.jpg|\.jpeg|\.pdf)$/i;
+    if(!allowedExtensions.exec(filePath)){
+        alert('Please upload file having extensions .jpeg/.jpg/.pdf only.');
+        fileInput.value = '';
+        return false;
+    }else{
+        //Image preview
+        if (fileInput.files && fileInput.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('imagePreview').innerHTML = '<img src="'+e.target.result+'"/>';
+            };
+            reader.readAsDataURL(fileInput.files[0]);
+        }
+    }
+}
+      </script> 
+<body>
+<center>
+<pre>
+<div class="container"><font face="Baskerville Old Face" size="+2" color="white">
+  <form  action = "paperpublications.php " enctype="multipart/form-data" name = "myForm" onsubmit = "return validate()" method="post"><ul class="form-inline" role="form"><div class="color"><font face="times" color="white">
+    <fieldset><legend> <font face="stencil" size="+5" color="orange">PAPER PUBLICATIONS</font></legend>
+<label>Type </label><span class="required">*</span>                         <input type="text" name="field31" class="field-long" placeholder="eg.,journal,conference" /><br>
+<label>Level </label><span class="required">*</span>                         <select name="field4" class="field-select">
+        <option value="State">State</option>
+        <option value="National">National</option>
+        <option value="InterNational">InterNational</option>
+        </select>
+    
+   <label>Name Of Publisher<span class="required">*</span></label>   <input type="text" name="field32" class="field-long" placeholder="eg.,title of journal or conference" />
+
+  <label>Title Of The Paper <span class="required">*</span></label>    <input type="text" name="field33" class="field-long" placeholder="" /><br>
+  <label>Academic Year <span class="required">*</span></label>         <input type="text" name="field34" class="field-long" placeholder="eg:2016" />  <br>
+  <label>UGC Approved<span class="required">*</span></label>         <input type="radio" name="ugc" value="yes"checked>Yes   <input type="radio"name="ugc" value="no">No  
+
+ <label>Index <span class="required">*</span></label>                      <textarea name="field5" id="field5" class="field-long field-textarea"></textarea>
+ <label>Impact Factor <span class="required">*</span></label>         <input type="text" name="field3" id="field6" class="field-long" placeholder="" />
+  
+
+    Select files <input type="file" id="file"  name="file" multiple required>
+ 
+
+<input type="submit" name="sub" value="Submit" />         <input type="reset" name="rst" value="RESET">
+</fieldset>
+</form>
+    
+    
+
+
+
+</body>
+</div>
+</html>
